@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqmasi8eujlq7"]
+
+[ext_resource type="PackedScene" uid="uid://d0libj1y6sgm6" path="res://Asset/race.glb" id="1_bq4yv"]
+[ext_resource type="Script" path="res://Car_Controller.gd" id="1_ky5s8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_unfu3"]
+bounce = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2xk61"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_25kcs"]
+
+[node name="Car" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_unfu3")
+continuous_cd = true
+angular_damp = 10.0
+script = ExtResource("1_ky5s8")
+
+[node name="Car_Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_2xk61")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Car_Collision"]
+transform = Transform3D(1.27, 0, 0, 0, 1.27, 0, 0, 0, 1.27, 0, 0, 0)
+mesh = SubResource("SphereMesh_25kcs")
+skeleton = NodePath("../..")
+
+[node name="Car_Mesh" parent="." instance=ExtResource("1_bq4yv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018827, 0, 0.0695415)
+
+[node name="RayCast3D" type="RayCast3D" parent="Car_Mesh"]

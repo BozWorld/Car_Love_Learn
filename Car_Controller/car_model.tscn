@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf0cm7q6jnvnj"]
-
-[ext_resource type="PackedScene" uid="uid://d0libj1y6sgm6" path="res://Asset/race.glb" id="1_gqj3j"]
-
-[node name="Car_Mesh" instance=ExtResource("1_gqj3j")]
